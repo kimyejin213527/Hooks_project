@@ -5,7 +5,8 @@ const Timer = (props) => {
       console.log("타이머 돌아가는중...");
     }, 1000); // 1초 마다 실행됨
     return () => {
-      clearInterval(timer);
+      //Timer 컴포넌트가 언마운트 될 때 return()함수가 동작
+      clearInterval(timer); //timer를 종료하는 함수이다
       console.log("타이머가 종료되었습니다.");
     };
   }, []);
