@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 const hardCalculate = (number) => {
   console.log("어려운 계산");
-  for (let i = 0; i < 999999999; i++) {}
+  for (let i = 0; i < 999999999; i++) {} //대략 1초 지연
   return number + 10000;
 };
 const easyCalculate = (number) => {
