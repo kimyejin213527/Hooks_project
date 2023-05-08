@@ -3,24 +3,29 @@ const MyContext = createContext();
 function App() {
   return (
     <MyContext.Provider value="Hello World">
-      <GrandParent />
+      <AwesomeComponent />
     </MyContext.Provider>
   );
 }
-function GrandParent() {
-  return <Parent />;
+function AwesomeComponent() {
+  return (
+    <div>
+      <FirstComponent />
+      <SecondComponent />
+      <ThirdComponent />
+    </div>
+  );
 }
-function Parent() {
-  return <Child />;
-}
-function Child() {
-  return <GrandChild />;
-}
-function GrandChild() {
-  return <Message />;
-}
-function Message() {
+function FirstComponent() {
   const value = useContext(MyContext);
-  return <div>Received: {value}</div>;
+  return <div>First Component says: {value}</div>;
+}
+function SecondComponent() {
+  const value = useContext(MyContext);
+  return <div>Second Component says: {value}</div>;
+}
+function ThirdComponent() {
+  const value = useContext(MyContext);
+  return <div>Third Component says: {value}</div>;
 }
 export default App;
