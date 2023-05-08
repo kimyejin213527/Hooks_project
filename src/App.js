@@ -1,20 +1,26 @@
-import React, { useRef, useEffect } from "react";
-const App = () => {
-  const inputRef = useRef();
-  useEffect(() => {
-    console.log(inputRef);
-    inputRef.current.focus();
-  }, []);
-  const login = () => {
-    alert(`환영합니다 ${inputRef.current.value}!`);
-    inputRef.current.value = "";
-    inputRef.current.focus();
-  };
+import { createContext, useContext } from "react";
+const MyContext = createContext();
+function App() {
   return (
-    <div>
-      <input ref={inputRef} type="text" placeholder="username" />
-      <button onClick={login}>로그인</button>
-    </div>
+    <MyContext.Provider value="Hello World">
+      <GrandParent />
+    </MyContext.Provider>
   );
-};
+}
+function GrandParent() {
+  return <Parent />;
+}
+function Parent() {
+  return <Child />;
+}
+function Child() {
+  return <GrandChild />;
+}
+function GrandChild() {
+  return <Message />;
+}
+function Message() {
+  const value = useContext(MyContext);
+  return <div>Received: {value}</div>;
+}
 export default App;
